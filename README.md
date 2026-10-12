@@ -10,7 +10,6 @@ The analysis includes:
 4. DBSCAN-based TLS detection and polygon reconstruction; and
 5. BF-TLS/TNC-TLS classification with the final logistic-regression model.
 
-This release covers inference. Model-training scripts and training data are not included.
 
 ## Contact
 
