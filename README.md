@@ -1,6 +1,6 @@
-# TLSProfiler inference demo
+# TLSProfiler
 
-TLSProfiler identifies and classifies tertiary lymphoid structures (TLSs) in five-channel mIHC images. This repository provides the inference code used in the accompanying manuscript and an example image set for testing the workflow.
+TLSProfiler identifies and classifies tertiary lymphoid structures (TLSs) in five-channel mIHC images.
 
 The analysis includes:
 
@@ -100,14 +100,6 @@ The command creates:
 ### Interpreting the sample summary
 
 The `sample_subtype` field in `TLSProfiler_summary.json` is a descriptive label for the retained TLSs in this demo. It is `BF-TLS` or `TNC-TLS` when all retained TLSs have the same subtype, `mixed` when both subtypes are present, and `non-TLS` when none are retained. The `mixed` label makes the coexistence of BF-TLS and TNC-TLS explicit so users do not overlook either TLS-level result. It does not change the subtype or probability assigned to any individual TLS in `retained_tls_and_subtypes.csv`.
-
-The manuscript uses a different, prespecified **patient-level** grouping rule for clinical analyses: a patient with at least one qualified BF-TLS is classified as BF-TLS, even if TNC-TLSs are also present; otherwise, a patient with at least one qualified TNC-TLS is classified as TNC-TLS; patients with no qualified TLS are classified as non-TLS. To reproduce that grouping, retain TLSs with at least 300 cells and apply this priority rule to the TLS-level results rather than using the demo's `sample_subtype` field. The selected minimum TLS cell count determines which TLSs are retained in the demo summary.
-
-## Default analysis settings
-
-The example was tested with `image_mpp = 0.5`, an arcsinh cofactor of `0.01`, DBSCAN `eps = 100`, DBSCAN `min_samples = 50`, an alpha-shape radius of `150`, a minimum B/T percentage of `10%`, and a minimum polygon size of `100` cells. The final display threshold defaults to `300` cells and can be changed in the interface or with `--minimum-tls-cells`.
-
-The model JSON records the feature order, transformation, coefficients, and probability cutoff used for BF-TLS/TNC-TLS prediction.
 
 ## Using a precomputed segmentation mask
 
